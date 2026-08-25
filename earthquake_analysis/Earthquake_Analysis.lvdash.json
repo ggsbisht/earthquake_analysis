@@ -1,0 +1,117 @@
+{
+  "datasets": [
+    {
+      "name": "a1b875b3",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        ""
+      ]
+    },
+    {
+      "name": "8f504f2d",
+      "displayName": "earthquake_data",
+      "config": {
+        "version": "1.1",
+        "source": "earthquake.silver.earthquake_data",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "b0b4aa4a",
+      "displayName": "Earthquake_anlysis",
+      "layout": [
+        {
+          "widget": {
+            "name": "b1a1f48f",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# <span style=\"font-size:36px;line-height:1.5\">Earthquake Viz</span>\n",
+                "<p>&nbsp;</p>\n"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "4919e3fb",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8f504f2d",
+                  "fields": [
+                    {
+                      "name": "mmi",
+                      "expression": "`mmi`"
+                    },
+                    {
+                      "name": "mag",
+                      "expression": "`mag`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "symbol-map",
+              "encodings": {
+                "coordinates": {
+                  "latitude": {
+                    "fieldName": "mmi"
+                  },
+                  "longitude": {
+                    "fieldName": "mag"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 7,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "363d9442",
+      "displayName": "Untitled page",
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
